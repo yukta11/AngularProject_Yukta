@@ -47,6 +47,7 @@ const routes: Routes = [
         path:'singlePage',
         loadChildren:()=>import('./single-page/single-page.module').then(m=>m.SinglePageModule)
       }
+    
      
     ]
   }

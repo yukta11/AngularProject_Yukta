@@ -3,8 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxScrollTopModule } from 'ngx-scrolltop';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -13,8 +14,9 @@ import { NgxScrollTopModule } from 'ngx-scrolltop';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
-    NgxScrollTopModule
+    NgxScrollTopModule,
+    BsDropdownModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

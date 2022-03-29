@@ -14,6 +14,7 @@ import { NavigationComponent } from './layout/navigation/navigation.component';
 
 
 
+
 @NgModule({
   declarations: [
     MainComponent,
@@ -27,7 +28,9 @@ import { NavigationComponent } from './layout/navigation/navigation.component';
   imports: [
     CommonModule,
     MainRoutingModule,
-    SharedModule
+    SharedModule,
+ 
+   
    
   ]
 })
