@@ -7,6 +7,9 @@ import { SharedModule } from '../shared/shared.module';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { NavigationComponent } from './layout/navigation/navigation.component';
+import { FormsModule } from '@angular/forms';
+// import { HttpClient } from '@angular/common/http';
+
 
 
 
@@ -21,6 +24,7 @@ import { NavigationComponent } from './layout/navigation/navigation.component';
     HeaderComponent,
     FooterComponent,
     NavigationComponent,
+    
  
  
    
@@ -29,6 +33,8 @@ import { NavigationComponent } from './layout/navigation/navigation.component';
     CommonModule,
     MainRoutingModule,
     SharedModule,
+    FormsModule,
+    // HttpClient
  
    
    

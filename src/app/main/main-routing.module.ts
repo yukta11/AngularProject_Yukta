@@ -44,8 +44,13 @@ const routes: Routes = [
         loadChildren:()=>import('./short-code/short-code.module').then(m=>m.ShortCodeModule)
       },
       {
-        path:'singlePage',
+        path:'',
         loadChildren:()=>import('./single-page/single-page.module').then(m=>m.SinglePageModule)
+      },
+      {
+        path:'checkout',
+        loadChildren:()=>import('./checkout/checkout.module').then(m=>m.CheckoutModule)
+
       }
     
      

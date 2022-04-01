@@ -12,8 +12,8 @@
         <div class="login-form-grids">
             <h5>profile information</h5>
             <form action="#" method="post">
-                <input type="text" placeholder="First Name..." required=" " >
-                <input type="text" placeholder="Last Name..." required=" " >
+                <input type="text" placeholder="First Name..." required=" " name="firstName" [(ngModel)]="firstNameValue" >
+                <input type="text" placeholder="Last Name..." required=" " name="lastName" [(ngModel)]="lastNameValue">
             </form>
             <div class="register-check-box">
                 <div class="check">
@@ -22,15 +22,15 @@
             </div>
             <h6>Login information</h6>
                 <form action="#" method="post">
-                <input type="email" placeholder="Email Address" required=" " >
-                <input type="password" placeholder="Password" required=" " >
-                <input type="password" placeholder="Password Confirmation" required=" " >
+                <input type="email" placeholder="Email Address" required=" " name="email"   [(ngModel)]="email" >
+                <input type="password" placeholder="Password" required=" " name="password" [(ngModel)] ="password">
+                <input type="password" placeholder="Password Confirmation" required=" " name="cpassword" [(ngModel)]="confirmPassword" >
                 <div class="register-check-box">
                     <div class="check">
                         <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>I accept the terms and conditions</label>
                     </div>
                 </div>
-                <input type="submit" value="Register">
+                <input type="submit"(click)="onRegister()" value="Register">
             </form>
         </div>
         <div class="register-home">

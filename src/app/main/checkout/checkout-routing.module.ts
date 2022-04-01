@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SinglePageComponent } from './single-page/single-page.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   {
-    path:'singlePage/:id',
-    component:SinglePageComponent
+    path:'',
+    component:CheckoutComponent
   }
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SinglePageRoutingModule { }
+export class CheckoutRoutingModule { }

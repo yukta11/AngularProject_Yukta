@@ -4,7 +4,7 @@ import { GroceryComponent } from './grocery/grocery.component';
 
 const routes: Routes = [
   {
-    path:'grocery',
+    path:'',
     component:GroceryComponent
   }
 ];
