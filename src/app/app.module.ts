@@ -6,9 +6,7 @@ import { AppComponent } from './app.component';
 import { NgxScrollTopModule } from 'ngx-scrolltop';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
-// import { HttpClient, HttpClientModule } from '@angular/common/http';
-// import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [

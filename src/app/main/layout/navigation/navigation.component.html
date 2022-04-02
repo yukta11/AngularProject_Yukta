@@ -6,13 +6,16 @@
           <li class="active"><a routerLink="offers">Offers</a></li>
           <li class="active"><a routerLink="contact">Contact</a></li>
           <li class="dropdown" *ngFor="let c of category">
-            <a routerLink="#" class="dropdown-toggle" data-toggle="dropdown">{{ c.title }}<b class="caret"></b></a>
+            <a routerLink="{{c.title}}" class="dropdown-toggle" data-toggle="dropdown">{{ c.title }}<b class="caret"></b></a>
             <ul class="dropdown-menu multi-column columns-3">
               <div class="row">
                 <div class="multi-gd-img">
-                  <ul class="multi-column-dropdown">
+                  <ul class="multi-column-dropdown" >
                     <h6>{{c.title}}</h6>
-                    <li><a routerLink="">{{subCategory}}</a></li>
+                    <li *ngFor="let sub of c.subcategories['data']">
+                      <a routerLink="{{sub.title}}">{{sub.title}}</a>
+                      
+                    </li>
                   </ul>
                 </div>
               </div>

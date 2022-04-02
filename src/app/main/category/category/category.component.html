@@ -5,12 +5,14 @@
             <div class="categories">
                 <h2>Categories</h2>
                 <ul class="cate" *ngFor="let cat of categoryList">
-                    <li><a routerLink="product"><i class="fa fa-arrow-right" aria-hidden="true"></i>{{cat.title}}</a></li>
-                        <ul>
-                            <li><a routerLink="product"><i class="fa fa-arrow-right" aria-hidden="true"></i>Cuts & Sprouts</a></li>
-                            <li><a routerLink="product"><i class="fa fa-arrow-right" aria-hidden="true"></i>Flowers</a></li>
+                    <li><a routerLink="{{cat.title}}"><i class="fa fa-arrow-right" aria-hidden="true"></i>{{cat.title}}</a></li>
+                        <!-- <ul>
+                            <li>
+                                <a routerLink="product"><i class="fa fa-arrow-right" aria-hidden="true"></i>Non veg</a>
+                            </li>
+                            
                  
-                        </ul>
+                        </ul> -->
                 </ul>
             </div>
                                                                                                                                                                                               

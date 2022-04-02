@@ -16,6 +16,7 @@ export class NavigationComponent implements OnInit {
       // console.log(this.category)
       this.subCategory=this.category[0].subcategories.data[0].title;
     
+    
       
      
      

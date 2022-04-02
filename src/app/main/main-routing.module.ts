@@ -51,6 +51,10 @@ const routes: Routes = [
         path:'checkout',
         loadChildren:()=>import('./checkout/checkout.module').then(m=>m.CheckoutModule)
 
+      },
+      {
+        path:'editProfile',
+        loadChildren:()=>import('./edit-profile/edit-profile.module').then(m=>m.EditProfileModule)
       }
     
      

@@ -8,6 +8,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { NavigationComponent } from './layout/navigation/navigation.component';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 // import { HttpClient } from '@angular/common/http';
 
 
@@ -34,6 +35,7 @@ import { FormsModule } from '@angular/forms';
     MainRoutingModule,
     SharedModule,
     FormsModule,
+    ReactiveFormsModule 
     // HttpClient
  
    

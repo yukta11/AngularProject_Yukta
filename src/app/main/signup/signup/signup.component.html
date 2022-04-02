@@ -11,26 +11,26 @@
         <h2>Register Here</h2>
         <div class="login-form-grids">
             <h5>profile information</h5>
-            <form action="#" method="post">
-                <input type="text" placeholder="First Name..." required=" " name="firstName" [(ngModel)]="firstNameValue" >
-                <input type="text" placeholder="Last Name..." required=" " name="lastName" [(ngModel)]="lastNameValue">
-            </form>
-            <div class="register-check-box">
-                <div class="check">
-                    <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>Subscribe to Newsletter</label>
-                </div>
-            </div>
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                <input  type="text" placeholder="First Name..."   formControlName="firstName">
+                <span  class="label label-danger" *ngIf="signupData.firstName?.invalid && signupData.firstName?.touched" >Enter the First Name</span>
+                <input  type="text" placeholder="Last Name..."   formControlName="lastName" >
+            
+            
             <h6>Login information</h6>
-                <form action="#" method="post">
-                <input type="email" placeholder="Email Address" required=" " name="email"   [(ngModel)]="email" >
-                <input type="password" placeholder="Password" required=" " name="password" [(ngModel)] ="password">
-                <input type="password" placeholder="Password Confirmation" required=" " name="cpassword" [(ngModel)]="confirmPassword" >
-                <div class="register-check-box">
-                    <div class="check">
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>I accept the terms and conditions</label>
-                    </div>
+                <input type="email" placeholder="Email Address"    formControlName="email" >
+                <span class="label label-danger" *ngIf="signupData.email?.invalid && signupData.email?.touched ">Enter the Valid Email address </span>
+                <input type="password" placeholder="Password"  formControlName="password">
+                <span class="label label-danger" *ngIf="signupData.password?.invalid && signupData.password?.touched" >Password input field is not valid</span>
+                <input type="password" placeholder="Password Confirmation"  formControlName="cpassword">
+                <span></span>
+                <input type="text" placeholder="Phone Number"  formControlName="phoneNumber">
+                <span class="label label-danger"*ngIf="signupData.phoneNumber?.invalid && signupData.phoneNumber?.touched">Phonenumber input field is not valid</span>
+                
+                <div class="register-home">
+                    <button class="btn btn-primary" type="submit" value="Register" [disabled]="signupForm.invalid">Register</button>
                 </div>
-                <input type="submit"(click)="onRegister()" value="Register">
+               
             </form>
         </div>
         <div class="register-home">
