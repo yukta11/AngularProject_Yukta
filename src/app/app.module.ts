@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { NgxScrollTopModule } from 'ngx-scrolltop';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
+import { MainInterceptor } from './shared/main.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { SharedModule } from './shared/shared.module';
  
    
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,useClass:MainInterceptor,multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

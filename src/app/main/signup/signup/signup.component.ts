@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/Services/auth.service';
 
 
 
@@ -9,28 +10,39 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  signupForm = new FormGroup({
-    firstName:new FormControl('',Validators.required),
-    lastName:new FormControl(''),
+  public submitted =false;
+   signupForm = new FormGroup({
+    first_name:new FormControl('',Validators.required),
+    last_name:new FormControl(''),
     email:new FormControl('',[Validators.required,Validators.email]),
-    password:new FormControl('',[Validators.required,Validators.minLength(5)]),
-    cpassword:new FormControl('',Validators.required),
-    phoneNumber:new FormControl('',Validators.required)
+    password:new FormControl('',[Validators.required,Validators.pattern("(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!#^~%*?&,.<>\"'\\;:{\\}\\[\\]\\|\\+\\-\\=\\_\\)\\(\\)\\`\\/\\\\\\]])[A-Za-z0-9d$@].{7,}")]),
+    mobile_number:new FormControl('',[Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")] )
     
 
   })
 
 
-  constructor() { }
-
+  constructor(private _register:AuthService) { }
+    
   ngOnInit(): void {
+    
+     
   }
   onSubmit(){
-    console.warn(this.signupForm.value)
+    this.submitted =true;
+    if(this.signupForm.valid){
+      this._register.registerUser(this.signupForm.value).subscribe(response=>{
+               console.log(response)
+             })
+    }
+
+
+
   }
   get signupData(){
     return this.signupForm.controls
   }
+  
  
   
 }

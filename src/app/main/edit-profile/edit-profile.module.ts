@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { EditProfileRoutingModule } from './edit-profile-routing.module';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,8 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
   ],
   imports: [
     CommonModule,
-    EditProfileRoutingModule
+    EditProfileRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class EditProfileModule { }

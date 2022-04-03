@@ -11,19 +11,37 @@
         <h2>Login Form</h2>
     
         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
-            <form>
-                <input type="email" placeholder="Email Address" required=" " name="email" [(ngModel)]="emailValue" >
-                <input type="password" placeholder="Password" required=" " name="password" [(ngModel)]="passwordValue">
-                <div class="forgot">
-                    <a href="#">Forgot Password?</a>
+            <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                <input type="email" placeholder="Email Address"  formControlName="username" >
+                <div *ngIf="submitted && formControl.username.errors" class="text-danger">
+                    <div *ngIf="formControl.username.errors.email">Email must be valid</div>
+                    <div *ngIf="formControl.username.errors.required">Email is required</div>
                 </div>
-                <input type="submit" (click)="onLogin()"  value="Login">
+                <input type="password" placeholder="Password"  formControlName="password">
+                <div *ngIf="submitted && formControl.password.errors" class="text-danger">
+                    <div *ngIf="formControl.password.errors.pattern">
+                        <ul>
+                            <li>Password should be alphanumeric</li>
+                            <li>A letter of the password should be capital</li>
+                            <li>Password must contain a special character (@, $, !, &, etc)</li>
+                            <li>Password length must be greater than 7 characters</li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="forgot">
+                    <a routerLink="/forgotPassword">Forgot Password?</a>
+                </div>
+                
+                <input type="submit" value="Login">
+                
             </form>
         </div>
         <h4>For New People</h4>
         <p><a routerLink="/signup">Register Here</a> (Or) go back to <a routerLink="/home">Home<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
     </div>
 </div>
+
 
 
 
