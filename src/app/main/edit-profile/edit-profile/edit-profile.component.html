@@ -10,8 +10,8 @@
               <div class="row">
                 <div class="col-12 col-sm-auto mb-3">
                   <div class="mx-auto" style="width: 140px;">
-                    <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                      <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
+                    <div class="d-flex justify-content-center align-items-center rounded"  style="height: 140px; background-color: rgb(233, 236, 239);">
+                     <img  style="height: 140px; width: 140px;" src="{{userImage}}" alt="UserPhoto">
                     </div>
                   </div>
                 </div>
@@ -19,31 +19,28 @@
                   <div class="text-center text-sm-left mb-2 mb-sm-0">
                     <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{firstName}} {{lastName}}</h4>
                     <p class="mb-0">{{Email}}</p>
-                    <div class="mt-2">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fa fa-fw fa-camera"></i>
-                        <span>Change Photo</span>
-                      </button>
-                    </div>
+                    <p class="mb-0">Created at {{createdDate}} </p>
+                    <p class="mb-0">Updated at  {{createdDate}}</p>
                   </div>
                 </div>
               </div>
               <div class="tab-content pt-3">
                 <div class="tab-pane active">
-                  <form  [formGroup]="userDetail" (ngSubmit)="onUserdataChange()"   class="form" novalidate="">
+                  <form  [formGroup]="userDetail" (ngSubmit)="userUpdate()"   class="form">
                     <div class="row">
                       <div class="col">
                         <div class="row">
                           <div class="col">
                             <div class="form-group">
                               <label>First Name</label>
-                              <input class="form-control" type="text" formControlName="first_name" placeholder="First name" value="{{firstName}}">
+                              <input class="form-control" type="text" formControlName="first-name" placeholder="First name" value="{{firstName}}">
                             </div>
+              
                           </div>
                           <div class="col">
                             <div class="form-group">
                               <label>Last Name</label>
-                              <input class="form-control" type="text"  formControlName="last_name"   placeholder="Last name" value="{{lastName}}">
+                              <input class="form-control" type="text"  formControlName="last-name"   placeholder="Last name" value="{{lastName}}">
                             </div>
                           </div>
                         </div>
@@ -51,56 +48,77 @@
                           <div class="col">
                             <div class="form-group">
                               <label>Email</label>
-                              <input class="form-control" type="text"  formControlName="email" placeholder="user@example.com" value="{{Email}}">
+                              <input class="form-control" type="text"  placeholder="user@example.com" value="{{Email}}" disabled>
                             </div>
                           </div>
                           <div class="col">
                             <div class="form-group">
                               <label>Phone Number</label>
-                              <input class="form-control" type="text" formControlName="mobile_number" placeholder="Phone Number" value="{{phoneNum}}">
+                              <input class="form-control" type="text"placeholder="Phone Number" value="{{phoneNum}}" disabled>
                             </div>
+                           
+                            <div class="row">
+                              <div class="col d-flex justify-content-end">
+                                <button style="margin-right: auto;" class="btn btn-primary"type="submit"[disabled]=!userDetail.valid>Save Changes</button>
+                              </div>
+
+                            </div>
+
                             
-                            <p>Created at: <span>{{createdDate}}</span></p><br>
-                            <p>Updated at: <span>{{createdDate}}</span></p>
+
                           </div>
                         </div>
                        
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-12 col-sm-6 mb-3">
-                        <div class="mb-2"><b>Change Password</b></div>
-                        <div class="row">
-                          <div class="col">
-                            <div class="form-group">
-                              <label>Current Password</label>
-                              <input class="form-control" type="password" formControlName="old_password" placeholder="••••••">
+                    </form>
+                    <br>
+                    <br>
+                    <form [formGroup]="passwordUpdate" class="form" (ngSubmit)="onChangePassword()" >
+                      <div class="row">
+                        <div class="col-12 col-sm-6 mb-3">
+                          <div class="mb-2"><b>Change Password</b></div>
+                          <div class="row">
+                            <div class="col">
+                              <div class="form-group">
+                                <label>Current Password</label>
+                                <input class="form-control" type="password" formControlName="old-password" placeholder="••••••">
+                              </div>
+                           
                             </div>
                           </div>
-                        </div>
-                        <div class="row">
-                          <div class="col">
-                            <div class="form-group">
-                              <label>New Password</label>
-                              <input class="form-control" type="password" formControlName="new_password" placeholder="••••••">
+                          <div class="row">
+                            <div class="col">
+                              <div class="form-group">
+                                <label>New Password</label>
+                                <input class="form-control" type="password" formControlName="new-password" placeholder="••••••">
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="row">
-                          <div class="col">
-                            <div class="form-group">
-                              <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                              <input class="form-control" type="password" formControlName="confirm_password" placeholder="••••••"></div>
+                    
+
+                          <div class="row">
+                            <div class="col">
+                              <div class="form-group">
+                                <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
+                                <input class="form-control" type="password" formControlName="confirm-password" placeholder="••••••"></div>
+                            </div>
                           </div>
+                          <!-- <div *ngIf="submitted && passwordUpdate.value['new-password'] != passwordUpdate.value['confirm-password']">
+                            <span>Password didn't match</span>
+                          </div> -->
                         </div>
                       </div>
-                    </div>
-                    <div class="row">
-                      <div class="col d-flex justify-content-end">
-                        <button class="btn btn-primary" type="submit">Save Changes</button>
+                      <div class="row">
+                        <div class="col d-flex justify-content-end">
+                          <button class="btn btn-primary"type="submit" [disabled]="!passwordUpdate.valid">Save Password</button>
+                        </div>
                       </div>
-                    </div>
-                  </form>
+
+                    </form>
+                    
+                   
+                  
 
                 </div>
               </div>

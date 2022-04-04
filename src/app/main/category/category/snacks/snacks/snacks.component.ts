@@ -7,6 +7,8 @@ import { ProductService } from 'src/app/Services/product.service';
   styleUrls: ['./snacks.component.css']
 })
 export class SnacksComponent implements OnInit {
+  totalItems: any;
+  page: number = 1
   productSnacks:any;
 
   constructor(private SnacksType:ProductService) { }

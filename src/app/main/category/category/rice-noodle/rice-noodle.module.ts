@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { RiceNoodleRoutingModule } from './rice-noodle-routing.module';
 import { RiceNoodleComponent } from './rice-noodle/rice-noodle.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { RiceNoodleComponent } from './rice-noodle/rice-noodle.component';
   ],
   imports: [
     CommonModule,
-    RiceNoodleRoutingModule
+    RiceNoodleRoutingModule,
+    SharedModule
   ]
 })
 export class RiceNoodleModule { }

@@ -7,6 +7,9 @@ import { ProductService } from 'src/app/Services/product.service';
   styleUrls: ['./signature.component.css']
 })
 export class SignatureComponent implements OnInit {
+  totalItems: any;
+  page: number = 1
+
   productSignature:any;
 
   constructor(private signatureType:ProductService) { }

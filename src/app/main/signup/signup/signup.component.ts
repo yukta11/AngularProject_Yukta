@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
+import { MessageHandleService } from 'src/app/Services/message-handle.service';
 
 
 
@@ -11,6 +12,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class SignupComponent implements OnInit {
   public submitted =false;
+  test:any;
    signupForm = new FormGroup({
     first_name:new FormControl('',Validators.required),
     last_name:new FormControl(''),
@@ -22,7 +24,7 @@ export class SignupComponent implements OnInit {
   })
 
 
-  constructor(private _register:AuthService) { }
+  constructor(private _register:AuthService, private msg:MessageHandleService) { }
     
   ngOnInit(): void {
     
@@ -32,9 +34,18 @@ export class SignupComponent implements OnInit {
     this.submitted =true;
     if(this.signupForm.valid){
       this._register.registerUser(this.signupForm.value).subscribe(response=>{
-               console.log(response)
-             })
+               this.msg.handleSuccessMessage('Signup successfull!!!')
+       },
+       (err)=>{
+        const error = err.error['errors'];
+        
+        for(let er in error){
+          this.msg.HandleErrorMessage(error[er].title , error[er].message);
+          
+        }
+      })
     }
+   
 
 
 

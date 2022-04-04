@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MomoRoutingModule } from './momo-routing.module';
 import { MomoComponent } from './momo/momo.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { MomoComponent } from './momo/momo.component';
   ],
   imports: [
     CommonModule,
-    MomoRoutingModule
+    MomoRoutingModule,
+    SharedModule
   ]
 })
 export class MomoModule { }

@@ -10,6 +10,7 @@ export class AuthService {
   grant_type ='password';
   private _registerUrl='https://uat.ordering-dalle.ekbana.net/api/v4/auth/signup';
   private _loginUrl ='https://uat.ordering-dalle.ekbana.net/api/v4/auth/login';
+  private _changePasswordUrl = 'https://uat.ordering-dalle.ekbana.net/api/v4/profile/change-password';
 
   constructor(private http:HttpClient) { }
 
@@ -26,6 +27,19 @@ export class AuthService {
     return this.http.post<any>(this._loginUrl, allData)
 
   }
+  changePassword(user:any){
+    return this.http.post(this._changePasswordUrl,user)
+  }
+
+
+
+
+
+
+
+
+
+
   setToken(token :string){
     localStorage.setItem("Authorization", token);
   }

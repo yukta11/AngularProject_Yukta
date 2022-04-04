@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserProfileService } from 'src/app/Services/user-profile.service';
+import { AuthService } from 'src/app/Services/auth.service';
+import { MessageHandleService } from 'src/app/Services/message-handle.service';
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
@@ -14,21 +16,29 @@ export class EditProfileComponent implements OnInit {
   phoneNum:any;
   createdDate:any;
   UpdatedDate:any;
+  userImage:any;
+  newPassword:any;
+  confirmPassword:any;
+  test:any;
+   public submitted = false;
+   public disable = false;
 
 
 
   userDetail = new FormGroup({
-    first_name:new FormControl('',Validators.required),
-    last_name:new FormControl(''),
-    email:new FormControl('',[Validators.required,Validators.email]),
-    old_password:new FormControl('',Validators.required),
-    new_password :new FormControl('',[Validators.required,Validators.pattern("(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!#^~%*?&,.<>\"'\\;:{\\}\\[\\]\\|\\+\\-\\=\\_\\)\\(\\)\\`\\/\\\\\\]])[A-Za-z0-9d$@].{7,}")]),
-    confirm_password: new FormControl('',[Validators.required]),
-    mobile_number:new FormControl('',[Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")] )
+    'first-name':new FormControl('',Validators.required),
+    'last-name':new FormControl('',Validators.required),
+  })
+
+  passwordUpdate =new FormGroup({
+    'old-password':new FormControl('',Validators.required),
+    'new-password' :new FormControl('',[Validators.required,Validators.pattern("(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!#^~%*?&,.<>\"'\\;:{\\}\\[\\]\\|\\+\\-\\=\\_\\)\\(\\)\\`\\/\\\\\\]])[A-Za-z0-9d$@].{7,}")]),
+    'confirm-password': new FormControl('',[Validators.required]),
 
   })
 
-  constructor(private userData:UserProfileService) { }
+
+  constructor(private userData:UserProfileService,private changePassword:AuthService,private msg:MessageHandleService) { }
 
   ngOnInit(): void {
     this.userData.getUserProfile().subscribe(response=>{
@@ -39,12 +49,53 @@ export class EditProfileComponent implements OnInit {
       this.phoneNum = this.userDetails.mobileNumber;
       this.createdDate = this.userDetails.createdAt;
       this.UpdatedDate = this.userDetails.updatedAt;
+      this.userImage = this.userDetails.image;
       
       console.log(this.userDetails);
     })
   }
-  onUserdataChange(){
-    console.log(this.userDetail.value)
+  get UserProfile(){
+    return this.userDetail.controls
   }
+  get Password(){
+    return this.passwordUpdate.controls
+  }
+
+  userUpdate(){
+    
+    this.submitted=true;
+    if(this.userDetail.valid){
+      this.userData.updateProfile(this.userDetail.value).subscribe(response=>{
+       this.msg.handleSuccessMessage('Profile Updated!!!')
+      })
+      console.log('Success')
+    }
+
+  }
+ 
+  onChangePassword(){
+    this.submitted=true;
+    if(this.passwordUpdate.valid){
+      this.changePassword.changePassword(this.passwordUpdate.value).subscribe(response=>{
+       this.msg.handleSuccessMessage('Password changed!!!')
+      },
+      (err)=>{
+        const error = err.error['errors'];
+      
+      for(let er in error){
+        this.msg.HandleErrorMessage(error[er].title , error[er].message);
+        
+      }
+
+      })
+      
+      
+    }
+
+    
+
+  }
+ 
+
 
 }

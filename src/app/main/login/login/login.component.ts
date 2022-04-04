@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
 import { Router } from '@angular/router';
+import { MessageHandleService } from 'src/app/Services/message-handle.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   })
   
 
-  constructor(private _login:AuthService,private router:Router) { }
+  constructor(private _login:AuthService,private router:Router, private msg:MessageHandleService) { }
 
   ngOnInit(): void {
   }
@@ -26,17 +27,32 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     if(this.loginForm.valid){
       this._login.loginUser(this.loginForm.value).subscribe(response=>{
+    
         this._login.setToken(response['access_token']);
+        this.msg.handleSuccessMessage("Login Successfull")
         this.router.navigate(['/home'])
         console.log(response)
       
-      })
+      },
+      (err)=>{
+        const error = err.error['errors'];
       
-      console.log(this.loginForm.value)
+      for(let er in error){
+        this.msg.HandleErrorMessage(error[er].title , error[er].message);
+    
+      }
+      }
+      )
+      
+      // console.log(this.loginForm.value)
       
       
 
     }
+    else{
+      console.log('Invalid info')
+    }
+
   
   }
   get formControl(){

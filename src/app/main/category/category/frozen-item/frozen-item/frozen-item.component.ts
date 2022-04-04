@@ -7,6 +7,8 @@ import { ProductService } from 'src/app/Services/product.service';
   styleUrls: ['./frozen-item.component.css']
 })
 export class FrozenItemComponent implements OnInit {
+  totalItems: any;
+  page: number = 1
   productFrozenItem:any
 
   constructor(private frozenItemType:ProductService) { }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { VegRoutingModule } from './veg-routing.module';
 import { VegComponent } from './veg/veg.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { VegComponent } from './veg/veg.component';
   ],
   imports: [
     CommonModule,
-    VegRoutingModule
+    VegRoutingModule, 
+    SharedModule
   ]
 })
 export class VegModule { }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http'
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -15,7 +16,11 @@ import {HttpClientModule} from '@angular/common/http'
 
   ],
   exports:[
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxPaginationModule
+
   ]
 })
 export class SharedModule { }

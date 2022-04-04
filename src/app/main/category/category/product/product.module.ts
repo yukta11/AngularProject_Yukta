@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { ProductRoutingModule } from './product-routing.module';
 import { ProductComponent } from './product/product.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import {FilterPipeModule } from 'ngx-filter-pipe';
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { ProductComponent } from './product/product.component';
   ],
   imports: [
     CommonModule,
-    ProductRoutingModule
+    ProductRoutingModule,
+    FilterPipeModule,
+    SharedModule
   ]
 })
 export class ProductModule { }

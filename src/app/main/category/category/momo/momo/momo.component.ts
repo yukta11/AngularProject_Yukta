@@ -8,6 +8,8 @@ import { ProductService } from 'src/app/Services/product.service';
 })
 export class MomoComponent implements OnInit {
   productMomo:any;
+  totalItems: any;
+  page: number = 1
 
   constructor(private momoType:ProductService) { }
 

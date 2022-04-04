@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SignatureRoutingModule } from './signature-routing.module';
 import { SignatureComponent } from './signature/signature.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,7 @@ import { SignatureComponent } from './signature/signature.component';
   ],
   imports: [
     CommonModule,
-    SignatureRoutingModule
+    SignatureRoutingModule,SharedModule
   ]
 })
 export class SignatureModule { }

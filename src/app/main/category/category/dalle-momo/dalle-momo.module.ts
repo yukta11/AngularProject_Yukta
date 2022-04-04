@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { DalleMomoRoutingModule } from './dalle-momo-routing.module';
 import { DalleMomoComponent } from './dalle-momo/dalle-momo.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 
 
 @NgModule({
@@ -11,7 +13,8 @@ import { DalleMomoComponent } from './dalle-momo/dalle-momo.component';
   ],
   imports: [
     CommonModule,
-    DalleMomoRoutingModule
+    DalleMomoRoutingModule,
+    SharedModule
   ]
 })
 export class DalleMomoModule { }

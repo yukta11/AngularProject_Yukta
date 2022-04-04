@@ -8,6 +8,8 @@ import { ProductService } from 'src/app/Services/product.service';
 })
 export class DalleMomoComponent implements OnInit {
   productDalleMomo:any;
+  totalItems: any;
+  page: number = 1
 
   constructor(private dalleMomoType:ProductService) { }
 

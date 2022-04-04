@@ -8,6 +8,11 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { MainInterceptor } from './shared/main.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+
 
 
 @NgModule({
@@ -19,12 +24,15 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     AppRoutingModule,
     NgxScrollTopModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
  
    
   ],
   providers: [{
-    provide:HTTP_INTERCEPTORS,useClass:MainInterceptor,multi:true
+    provide:HTTP_INTERCEPTORS,useClass:MainInterceptor,multi:true,
+    
   }],
   bootstrap: [AppComponent]
 })

@@ -7,6 +7,8 @@ import { ProductService } from 'src/app/Services/product.service';
   styleUrls: ['./veg.component.css']
 })
 export class VegComponent implements OnInit {
+  totalItems: any;
+  page: number = 1
   productVeg:any
 
   constructor(private vegType:ProductService) { }

@@ -7,6 +7,8 @@ import { ProductService } from 'src/app/Services/product.service';
   styleUrls: ['./rice-noodle.component.css']
 })
 export class RiceNoodleComponent implements OnInit {
+  totalItems: any;
+  page: number = 1
   productRiceNoodle:any;
 
   constructor(private riceNoddleType:ProductService) { }
