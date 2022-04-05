@@ -46,6 +46,7 @@ export class CheckoutComponent implements OnInit {
           this.getCartProduct.getCartData().subscribe((response:any) => {
             this.cartData = response['data']['cartProducts'];
             this.total = this.cartData.length;
+            console.log(response)
           })
         })
       }
