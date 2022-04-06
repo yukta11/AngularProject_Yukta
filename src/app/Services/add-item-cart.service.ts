@@ -6,6 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AddItemCartService {
+  postItemUrl = 'https://uat.ordering-dalle.ekbana.net/api/v4/cart-product';
+  getcartItemUrl = 'https://uat.ordering-dalle.ekbana.net/api/v4/cart';
+  changeCartItemUrl = 'https://uat.ordering-dalle.ekbana.net/api/v4/cart-product/'
 
   constructor(private http:HttpClient) { }
 
@@ -17,25 +20,30 @@ export class AddItemCartService {
       "quantity": 1,
       "note": "testing"
     }
-    
-    const url ='https://uat.ordering-dalle.ekbana.net/api/v4/cart-product';
-    return this.http.post(url,cartData);
+    return this.http.post(this.postItemUrl,cartData);
 
   }
+
+
   getCartData(){
-    const url='https://uat.ordering-dalle.ekbana.net/api/v4/cart';
-    return this.http.get(url);
+  
+    return this.http.get(this.getcartItemUrl);
 
   }
+
+
   deleteCartItems(id: number) {
-    const  url ='https://uat.ordering-dalle.ekbana.net/api/v4/cart-product/'
-    return this.http.delete(url+ id);
+   
+    return this.http.delete(this.changeCartItemUrl+ id);
   }
+
+  
   updateItemQuantity(id: number, quantity: any) {
-    const url ='https://uat.ordering-dalle.ekbana.net/api/v4/cart-product/'
+   
     let data = {"quantity": quantity}
-    return this.http.patch<any>(url + id, data);
+    return this.http.patch<any>(this.changeCartItemUrl + id, data);
   }
+  
   
  
 }

@@ -17,9 +17,8 @@ export class EditProfileComponent implements OnInit {
   createdDate:any;
   UpdatedDate:any;
   userImage:any;
-  newPassword:any;
-  confirmPassword:any;
-  test:any;
+
+  
    public submitted = false;
    public disable = false;
 

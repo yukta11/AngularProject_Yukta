@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AddItemCartService } from 'src/app/Services/add-item-cart.service';
 import { MessageHandleService } from 'src/app/Services/message-handle.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { DeliveryAddressService } from 'src/app/Services/delivery-address.service';
+
 
 
 @Component({
@@ -11,9 +14,15 @@ import { MessageHandleService } from 'src/app/Services/message-handle.service';
 export class CheckoutComponent implements OnInit {
   cartData:any;
   total:number =0;
+
+  addressForm = new FormGroup({
+    title : new FormControl('',Validators.required),
+    latitude : new FormControl('',Validators.required),
+    longitude : new FormControl('', Validators.required)
+  })
   
 
-  constructor(private getCartProduct:AddItemCartService, private msg:MessageHandleService) { }
+  constructor(private getCartProduct:AddItemCartService, private msg:MessageHandleService,private deliveryAddress:DeliveryAddressService) { }
 
   ngOnInit(): void {
     this.getCartProduct.getCartData().subscribe((response:any) => {
@@ -70,5 +79,22 @@ export class CheckoutComponent implements OnInit {
       }
     }
 
+  }
+  onSubmitAddress(){
+    if(this.addressForm.valid){
+      this.deliveryAddress.postAddress(this.addressForm.value).subscribe(response =>{
+        this.msg.handleSuccessMessage('Delivery address added');
+      },
+      (err)=>{
+        const error = err.error['errors'];
+        for(let er in error){
+          this.msg.HandleErrorMessage(error[er].title , error[er].message);
+          
+        }
+      })
+
+    }
+   
+    
   }
 }

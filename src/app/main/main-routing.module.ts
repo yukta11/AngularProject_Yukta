@@ -59,6 +59,10 @@ const routes: Routes = [
       {
         path:'forgotPassword',
         loadChildren:()=>import('./forgot-password/forgot-password.module').then(m=>m.ForgotPasswordModule)
+      },
+      {
+        path:'checkout/delivery',
+        loadChildren:()=>import('./delivery/delivery.module').then(m=>m.DeliveryModule)
       }
     
      

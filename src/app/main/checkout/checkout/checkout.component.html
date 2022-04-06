@@ -39,14 +39,56 @@
                         
             </table>
         </div>
+        
         <div class="checkout-left">	
-            <div class="timetable_sub">Add your Delivery address</div>
-            <div class="checkout-right-basket">
-                <a routerLink="/product"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
+            <div class="container">
+                <div class="row centered-form">
+                <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                                <h3 class="panel-title">Add your delivery address</h3>
+                                 </div>
+                                 <div class="panel-body">
+                                <form [formGroup]="addressForm" (ngSubmit)="onSubmitAddress()">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                    <input type="text"  class="form-control input-sm" formControlName="title" placeholder="Enter your location">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <input type="text"  class="form-control input-sm" formControlName="latitude" placeholder="latitude">
+                                            </div>
+                                        </div>
+                                    </div>
+            
+                                    <div class="form-group">
+                                        <input type="text"  class="form-control input-sm" formControlName="longitude" placeholder="longitude">
+                                    </div>
+            
+                                <button  class="btn btn-warning"  type="submit" [disabled]="!addressForm.valid">Submit Address</button>
+                                
 
+                                
+                                </form>
+                                
+                            </div>
+                            <button routerLink="delivery"  class="btn btn-warning"  type="button">Show delivery address</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="checkout-right-basket">
+                <a routerLink="/product"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a> <br>
+                
+               
               
             </div>
             <div class="clearfix"> </div>
         </div>
     </div>
 </div>
+
