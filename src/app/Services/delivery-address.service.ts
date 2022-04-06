@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class DeliveryAddressService {
   isDefault =true;
   AddressUrl = 'https://uat.ordering-dalle.ekbana.net/api/v4/delivery-address';
+  deleteAddressUrl = 'https://uat.ordering-dalle.ekbana.net/api/v4/delivery-address/';
 
   constructor(private http:HttpClient) { }
 
@@ -20,6 +21,10 @@ postAddress(addressData:any ){
 }
 getAddress(){
   return this.http.get(this.AddressUrl);
+}
+
+deleteAddress(id:number){
+  return this.http.delete(this.deleteAddressUrl+id);
 }
 
 }

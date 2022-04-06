@@ -30,7 +30,8 @@ export class LoginComponent implements OnInit {
     
         this._login.setToken(response['access_token']);
         this.msg.handleSuccessMessage("Login Successfull")
-        this.router.navigate(['/home'])
+        // this.router.navigate(['/home'])
+        location.href = '/home';
        
       
       },

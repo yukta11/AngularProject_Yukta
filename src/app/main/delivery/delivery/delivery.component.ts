@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DeliveryAddressService } from 'src/app/Services/delivery-address.service';
+import { MessageHandleService } from 'src/app/Services/message-handle.service';
 
 @Component({
   selector: 'app-delivery',
@@ -8,29 +9,25 @@ import { DeliveryAddressService } from 'src/app/Services/delivery-address.servic
 })
 export class DeliveryComponent implements OnInit {
   allData:any;
-  location:any;
-  latitude:any;
-  longitude:any;
-  country:any;
-  provience:any;
-  district:any;
+  data:any;
 
 
-  constructor(private getAddress:DeliveryAddressService) { }
+  constructor(private getAddress:DeliveryAddressService, private msg:MessageHandleService) { }
 
   ngOnInit(): void {
     this.getAddress.getAddress().subscribe(response=>{
      this.allData = response;
-     console.log(this.allData)
-     this.location = this.allData.data[0].title;
-     this.latitude = this.allData.data[0].latitude;
-     this.longitude = this.allData.data[0].longitude;
-     this.country = this.allData.data[0].detail.country;
-     this.provience = this.allData.data[0].detail.provience;
-     this.district = this.allData.data[0].detail.district;
-
+     this.data = this.allData.data;
+     console.log(this.allData);
+     
      
     })
+  }
+  onDeleteAddress(id:any){
+    this.getAddress.deleteAddress(id).subscribe(response=>{
+      this.msg.handleSuccessMessage('Address deleted!!!')
+    })
+    
   }
 
 }
