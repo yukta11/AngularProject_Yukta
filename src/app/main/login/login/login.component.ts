@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
-import { Router } from '@angular/router';
 import { MessageHandleService } from 'src/app/Services/message-handle.service';
 
 @Component({
@@ -19,7 +18,7 @@ export class LoginComponent implements OnInit {
   })
   
 
-  constructor(private _login:AuthService,private router:Router, private msg:MessageHandleService) { }
+  constructor(private _login:AuthService, private msg:MessageHandleService) { }
 
   ngOnInit(): void {
   }

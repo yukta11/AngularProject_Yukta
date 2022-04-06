@@ -26,7 +26,15 @@ export class DeliveryComponent implements OnInit {
   onDeleteAddress(id:any){
     this.getAddress.deleteAddress(id).subscribe(response=>{
       this.msg.handleSuccessMessage('Address deleted!!!')
+      this.getAddress.getAddress().subscribe(response=>{
+        this.allData = response;
+        this.data = this.allData.data;
+        console.log(this.allData);
+        
+        
+       })
     })
+
     
   }
 

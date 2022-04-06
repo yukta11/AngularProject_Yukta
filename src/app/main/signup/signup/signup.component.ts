@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
 import { MessageHandleService } from 'src/app/Services/message-handle.service';
 
@@ -24,7 +25,7 @@ export class SignupComponent implements OnInit {
   })
 
 
-  constructor(private _register:AuthService, private msg:MessageHandleService) { }
+  constructor(private _register:AuthService, private msg:MessageHandleService, private router:Router) { }
     
   ngOnInit(): void {
     
@@ -35,6 +36,7 @@ export class SignupComponent implements OnInit {
     if(this.signupForm.valid){
       this._register.registerUser(this.signupForm.value).subscribe(response=>{
                this.msg.handleSuccessMessage('Signup successfull!!!')
+               this.router.navigate(['/login'])
        },
        (err)=>{
         const error = err.error['errors'];
